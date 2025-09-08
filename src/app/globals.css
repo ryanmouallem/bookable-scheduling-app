@@ -148,7 +148,7 @@
 }
 
 .search-input {
-  font-size: 18px;
+  font-size: 1rem;
   color: #3a3a3a;
   background-color: transparent;
   border: none;
@@ -169,7 +169,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 1rem;
   color: #fff;
   background-color: #3a3a3a;
   border-radius: 50%;
