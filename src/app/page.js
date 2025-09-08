@@ -1,7 +1,6 @@
-import { Header } from "@/components/ui/header";
 
 export default function Home() {
   return (
-    <div></div>
+    <div>This is the main content</div>
   );
 }

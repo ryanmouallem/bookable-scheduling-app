@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Search } from 'lucide-react';
 
 
-export default function SearchBar() {
+export const SearchBar = ({ className = "" }) => {
     const [input, setInput] = useState("");
 
     const handleSearch = () => {
@@ -14,7 +14,7 @@ export default function SearchBar() {
     }
 
   return (
-        <div className="search-bar">
+        <div className={`search-bar ${className}`}>
             <input 
                 type="search" 
                 className="search-input" 
