@@ -1,25 +1,27 @@
-import CalendarToolbar from "@/components/calendar/CalendarToolbar";
-import TimeGrid from "@/components/calendar/TimeGrid";
+import CalendarView from "@/components/calendar/CalendarView";
 import { prisma } from '@/lib/prisma';
 
 export default async function Home() {
 
-  const barbers = await prisma.user.findMany({
+  const allUsers = await prisma.user.findMany({
     where: {
-      role: 'BARBER'
+      isActive: true
     },
     select: {
       id: true,
       firstName: true,
       lastName: true,
       role: true
-    }
+    },
+    orderBy: [
+      { role: 'asc' }, // ADMIN first, then BARBER
+      { firstName: 'asc' }
+    ]
   })
 
   return (
     <main>
-      <CalendarToolbar />
-      <TimeGrid barbers={barbers} />
+      <CalendarView allUsers={allUsers} />
     </main>
   )
 }
