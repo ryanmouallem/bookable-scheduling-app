@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 
 export const Header = () => {
     return ( 
-        <header className="flex justify-between px-5 py-3 items-center">
+        <div className="flex justify-between px-5 py-3 items-center">
             <h1 className={`${montserrat.className} text-2xl`}>Bookable.</h1>
                 <div className="flex gap-4 items-center">
                     <SearchBar className='!hidden md:!flex' />
@@ -25,6 +25,6 @@ export const Header = () => {
                         />
                     </div>
                 </div>
-        </header>
+        </div>
     );
 }

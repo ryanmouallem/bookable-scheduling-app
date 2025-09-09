@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ui/header";
 import { SearchBar } from "@/components/ui/search-bar";
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/ui/app-sidebar"
 
 
 const geistSans = Geist({
@@ -22,12 +24,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        <SearchBar className="!flex md:!hidden mt-2 mb-6" />
-        {children}
+      <body className="h-screen flex flex-col">
+        <div>
+          <Header />
+          <SearchBar className="!flex md:!hidden mt-2 mb-6" />
+        </div>
+        
+        {/* Sidebar and content area */}
+        <div className="flex-1 flex overflow-hidden">
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="flex-1 overflow-auto">
+              <SidebarTrigger />
+              {children}
+            </main>
+          </SidebarProvider>
+        </div>
       </body>
     </html>
   );
