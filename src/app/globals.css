@@ -68,11 +68,11 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar: oklch(0% 0 0);
+  --sidebar-foreground: oklch(100% 0.00011 271.152);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent: oklch(100% 0.00011 271.152);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
@@ -120,3 +120,78 @@
     @apply bg-background text-foreground;
   }
 }
+
+.search-bar {
+    --size: 50px;
+    --padding: 8px;
+    --expanded-width: 400px;
+
+    display: flex;
+    justify-content: flex-end;
+    background-color: #fff;
+    box-shadow: 0 10px 10px 0 #d6d9e2;
+    border-radius: 100px;
+    outline: 1px solid transparent;
+    overflow: hidden;
+
+    padding: var(--padding);
+    margin-inline: auto;
+    width: var(--size);
+    height: var(--size);
+    max-width: 100%;
+    transition: width 0.5s, outline 0.5s;
+}
+
+    .search-bar:focus-within {
+    width: var(--expanded-width);
+    outline: 1px solid #2e2e2e;
+}
+
+    .search-input {
+    font-size: 1rem;
+    color: #3a3a3a;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-inline: 1rem;
+    flex: auto;
+
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+    .search-bar:focus-within .search-input {
+    opacity: 1;
+}
+
+    .search-submit {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #3a3a3a;
+    border-radius: 50%;
+    border: none;
+    width: calc(var(--size) - var(--padding) - var(--padding));
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        width: 90%;
+        outline: 1px solid #2e2e2e;
+    }
+
+    .search-bar:focus-within {
+        width: 90%;
+        outline: 1px solid #2e2e2e;
+    }
+
+    .search-input {
+        opacity: 1;
+    }
+}
+

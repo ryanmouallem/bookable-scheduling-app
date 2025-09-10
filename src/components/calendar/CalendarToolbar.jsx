@@ -42,14 +42,8 @@ export default function CalendarToolbar({
   };
 
   return (
-    <div className="pt-4">
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: `${TIME_COLUMN_WIDTH} 1fr`,
-        gap: '0px'
-      }}>
-        
-        <div></div>
+    <div>
+      <div>
         
         {/* Toolbar content */}
         <div className="flex items-center justify-between py-3 px-4 bg-gray-50/50 border">

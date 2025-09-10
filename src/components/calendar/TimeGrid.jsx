@@ -35,7 +35,7 @@ export default function TimeGrid({title, barbers}) {
     }
 
     return (
-        <div className="p-4 h-full flex flex-col">
+        <div className="h-full flex flex-col">
             <h1 className="mb-4">{title}</h1>
 
             {/* Fixed header */}
