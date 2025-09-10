@@ -10,12 +10,12 @@ const montserrat = Montserrat({
 
 export const Header = () => {
     return ( 
-        <div className="flex justify-between px-5 py-3 items-center">
-            <h1 className={`${montserrat.className} text-2xl`}>Bookable.</h1>
-                <div className="flex gap-4 items-center">
+        <div className="flex justify-between px-4 py-2 items-center border-b border-gray-200">
+            <h1 className={`${montserrat.className} text-xl`}>Bookable.</h1>
+                <div className="flex gap-3 items-center">
                     <SearchBar className='!hidden md:!flex' />
 
-                    <div className="w-12 h-12 rounded-full overflow-hidden">
+                    <div className="w-10 h-10 rounded-full overflow-hidden">
                         <Image
                             className="w-full h-full object-cover"
                             src={placeholder}

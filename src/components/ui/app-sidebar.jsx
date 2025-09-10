@@ -12,13 +12,15 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
+
+export const AppSidebar = ({ onSettingsClick }) => {
+
+  const items = [
+  // {
+  //   title: "Home",
+  //   url: "#",
+  //   icon: Home,
+  // },
   {
     title: "Tag",
     url: "#",
@@ -38,21 +40,21 @@ const items = [
     title: "Settings",
     url: "#",
     icon: Settings,
+    onClick: onSettingsClick
   },
 ]
-
-export const AppSidebar = () => {
   return (
-    <Sidebar>
+    <Sidebar className="w-16 md:w-20 border-r">
       <SidebarContent>
         <SidebarGroup>
             <SidebarMenu>
                 {items.map((item) => (
                 <SidebarMenuItem key={item.title} className="h-20">
-                    <SidebarMenuButton asChild size='lg' className="justify-center">
-                    <a href={item.url}>
-                        <item.icon />
-                    </a>
+                    <SidebarMenuButton asChild size='default' className="justify-center">
+                    <button
+                    onClick={item.onClick || (() => {})}>
+                      <item.icon className="h-4 w-4" />
+                    </button>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
                 ))}
