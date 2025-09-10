@@ -1,4 +1,5 @@
 import CalendarView from "@/components/calendar/CalendarView";
+import StaffManagement from "@/components/staff/StaffManagement";
 import { prisma } from '@/lib/prisma';
 
 export default async function Home() {
@@ -14,7 +15,7 @@ export default async function Home() {
       role: true
     },
     orderBy: [
-      { role: 'asc' }, // ADMIN first, then BARBER
+      { role: 'asc' },
       { firstName: 'asc' }
     ]
   })
@@ -22,6 +23,9 @@ export default async function Home() {
   return (
     <main>
       <CalendarView allUsers={allUsers} />
+      <div style={{ marginTop: '20px' }}>
+        <StaffManagement />
+      </div>
     </main>
   )
 }
