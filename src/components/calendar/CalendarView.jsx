@@ -6,7 +6,10 @@ import TimeGrid from "./TimeGrid";
 
 export default function CalendarView({ allUsers }) {
   const [staffFilter, setStaffFilter] = useState("Scheduled team");
-  const [selectedTeamMembers, setSelectedTeamMembers] = useState(new Set());
+  const [selectedTeamMembers, setSelectedTeamMembers] = useState(() => {
+    // Initialize with all barber IDs when starting with "Scheduled team"
+    return new Set(allUsers.filter(user => user.role === 'BARBER').map(user => user.id));
+  });
 
   // Filter barbers based on current selection
   const filteredBarbers = useMemo(() => {

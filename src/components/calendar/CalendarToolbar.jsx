@@ -46,7 +46,7 @@ export default function CalendarToolbar({
       <div>
         
         {/* Toolbar content */}
-        <div className="flex items-center justify-between py-3 px-4 bg-gray-50/50 border">
+        <div className="flex items-center justify-between py-2 px-4 bg-gray-50/50 border-b">
           {/* Left section: Today + Date navigation + Staff filter */}
           <div className="flex items-center gap-x-3">
             <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
