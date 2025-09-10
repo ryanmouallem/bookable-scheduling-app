@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  BARBER
+}
+
+model User {
+  id        String  @id @default(cuid())
+  firstName String
+  lastName  String
+  pin       String  @unique //4-digit pin
+  role      Role    @default(BARBER)
+  avatar    String?
+  isActive  Boolean @default(true)
+
+  bookings Booking[]
+
+  @@map("users")
+}
+
+model Client {
+  id        String  @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String?
+  phone     String?
+  notes     String?
+
+  bookings Booking[]
+
+  @@map("clients")
+}
+
+model Service {
+  id         String  @id @default(cuid())
+  name       String
+  duration   Int //minutes
+  priceCents Int //Price in cents
+  isActive   Boolean @default(true)
+
+  description String?
+
+  bookings Booking[]
+
+  @@map("services")
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  startTime DateTime
+  notes     String?
+
+  //relations
+
+  clientId  String
+  serviceId String
+  barberId  String
+
+  client  Client  @relation(fields: [clientId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
+  barber  User    @relation(fields: [barberId], references: [id])
+
+  @@map("bookings")
+}
+
+model ShopSettings {
+  id String @id @default("singleton")
+
+  // Operating hours as JSON
+  operatingHours Json @default("{\"monday\":{\"start\":540,\"end\":1020,\"closed\":false},\"tuesday\":{\"start\":540,\"end\":1020,\"closed\":false},\"wednesday\":{\"start\":540,\"end\":1020,\"closed\":false},\"thursday\":{\"start\":540,\"end\":1020,\"closed\":false},\"friday\":{\"start\":540,\"end\":1020,\"closed\":false},\"saturday\":{\"start\":540,\"end\":1020,\"closed\":false},\"sunday\":{\"closed\":true}}")
+
+  // Booking settings
+  bufferMinutes Int @default(5) // time between appointments
+
+  updatedAt DateTime @updatedAt
+
+  @@map("shop_settings")
+}
