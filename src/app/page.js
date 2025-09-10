@@ -1,8 +1,27 @@
+import CalendarView from "@/components/calendar/CalendarView";
+import { prisma } from '@/lib/prisma';
 
-export default function Home() {
+export default async function Home() {
+
+  const allUsers = await prisma.user.findMany({
+    where: {
+      isActive: true
+    },
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      role: true
+    },
+    orderBy: [
+      { role: 'asc' }, // ADMIN first, then BARBER
+      { firstName: 'asc' }
+    ]
+  })
+
   return (
-    <div className="p-1">
-        This is the main content
-    </div>
-  );
+    <main>
+      <CalendarView allUsers={allUsers} />
+    </main>
+  )
 }

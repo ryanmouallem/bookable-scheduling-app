@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
         <div className="flex-1 flex overflow-hidden">
           <SidebarProvider>
             <AppSidebar />
-            <main className="flex-1 overflow-auto">
+            <main className="flex-1">
               <SidebarTrigger />
               {children}
             </main>
