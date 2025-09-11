@@ -8,19 +8,19 @@ import { X } from "lucide-react";
 
 export function AppWrapper({ children }) {
     const [isStaffDrawerOpen, setIsStaffDrawerOpen] = useState(false);
+    const toggleStaffDrawer = () => setIsStaffDrawerOpen(!isStaffDrawerOpen);
 
     return (
         <SidebarProvider>
-            <AppSidebar onSettingsClick={() => setIsStaffDrawerOpen(true)} />
+            <AppSidebar onSettingsClick={toggleStaffDrawer} />
             
             {/* Conditional Staff Panel */}
             {isStaffDrawerOpen && (
-                <div className="w-96 bg-white border-r border-gray-200 flex flex-col">
+                <div className="w-96 bg-white flex flex-col mt-1">
                     {/* Panel Header */}
-                    <div className="flex items-center justify-between p-4 border-b">
-                        <h2 className="text-lg font-semibold">Staff Management</h2>
+                    <div className="flex items-center justify-end p-1 border-b">
                         <button 
-                            onClick={() => setIsStaffDrawerOpen(false)}
+                            onClick={toggleStaffDrawer}
                             className="p-1 hover:bg-gray-100 rounded"
                         >
                             <X className="w-5 h-5" />
@@ -28,14 +28,14 @@ export function AppWrapper({ children }) {
                     </div>
                     
                     {/* Panel Content */}
-                    <div className="flex-1 overflow-y-auto">
+                    <div className="flex-1 overflow-y-auto border-r border-gray-200">
                         <StaffManagement />
                     </div>
                 </div>
             )}
             
             <main className="flex-1">
-                <SidebarTrigger />
+                <SidebarTrigger className="ml-3 mt-2 scale-125"/>
                 {children}
             </main>
         </SidebarProvider>
