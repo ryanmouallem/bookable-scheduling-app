@@ -167,17 +167,32 @@ export default function CalendarToolbar({
           <div></div>
 
           {/* Right section: Actions */}
-          <div className="flex items-center">
-            <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
-              <Button
-                variant="ghost"
-                className="font-medium text-gray-700 hover:bg-emerald-50 px-4 h-8"
-              >
-                Add
-                <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <div className="flex items-center">
+                <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
+                  <Button
+                    variant="ghost"
+                    className="font-medium text-gray-700 hover:bg-emerald-50 px-4 h-8"
+                  >
+                    Add
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </PopoverTrigger>
+            <PopoverContent className="w-48 p-0" align="end">
+              <div className="p-2">
+                <button className="w-full cursor-pointer text-left px-2 py-1 h-8 text-sm hover:bg-gray-100 rounded">
+                  Appointment
+                </button>
+                <button className="w-full cursor-pointer text-left px-2 py-1 h-8 text-sm hover:bg-gray-100 rounded">
+                  Sales
+                </button>
+              </div>
+            </PopoverContent>
+          </Popover>
+
         </div>
       </div>
     </div>
