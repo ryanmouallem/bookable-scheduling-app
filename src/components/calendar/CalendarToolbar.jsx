@@ -11,6 +11,7 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { AddAppointment } from "../forms/add-appointment";
 
 const TIME_COLUMN_WIDTH = '70px';
 
@@ -166,6 +167,7 @@ export default function CalendarToolbar({
           {/* Center section: Empty for now */}
           <div></div>
 
+
           {/* Right section: Actions */}
           <Popover>
             <PopoverTrigger asChild>
@@ -183,9 +185,8 @@ export default function CalendarToolbar({
             </PopoverTrigger>
             <PopoverContent className="w-48 p-0" align="end">
               <div className="p-2">
-                <button className="w-full cursor-pointer text-left px-2 py-1 h-8 text-sm hover:bg-gray-100 rounded">
-                  Appointment
-                </button>
+                <AddAppointment />
+
                 <button className="w-full cursor-pointer text-left px-2 py-1 h-8 text-sm hover:bg-gray-100 rounded">
                   Sales
                 </button>
