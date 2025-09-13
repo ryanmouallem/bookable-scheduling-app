@@ -11,6 +11,8 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { AddAppointment } from "../forms/add-appointment";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const TIME_COLUMN_WIDTH = '70px';
 
@@ -49,6 +51,7 @@ export default function CalendarToolbar({
         <div className="flex items-center justify-between py-2 px-4 bg-gray-50/50 border-b">
           {/* Left section: Today + Date navigation + Staff filter */}
           <div className="flex items-center gap-x-3">
+            <SidebarTrigger className="scale-125" />
             <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
               <Button
                 variant="ghost"
@@ -166,18 +169,33 @@ export default function CalendarToolbar({
           {/* Center section: Empty for now */}
           <div></div>
 
+
           {/* Right section: Actions */}
-          <div className="flex items-center">
-            <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
-              <Button
-                variant="ghost"
-                className="font-medium text-gray-700 hover:bg-emerald-50 px-4 h-8"
-              >
-                Add
-                <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <div className="flex items-center">
+                <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
+                  <Button
+                    variant="ghost"
+                    className="font-medium text-gray-700 hover:bg-emerald-50 px-4 h-8"
+                  >
+                    Add
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </PopoverTrigger>
+            <PopoverContent className="w-48 p-0" align="end">
+              <div className="p-2">
+                <AddAppointment />
+
+                <button className="w-full cursor-pointer text-left px-2 py-1 h-8 text-sm hover:bg-gray-100 rounded">
+                  Sales
+                </button>
+              </div>
+            </PopoverContent>
+          </Popover>
+
         </div>
       </div>
     </div>
