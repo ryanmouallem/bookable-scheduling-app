@@ -11,6 +11,7 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const TIME_COLUMN_WIDTH = '70px';
 
@@ -49,6 +50,7 @@ export default function CalendarToolbar({
         <div className="flex items-center justify-between py-2 px-4 bg-gray-50/50 border-b">
           {/* Left section: Today + Date navigation + Staff filter */}
           <div className="flex items-center gap-x-3">
+            <SidebarTrigger className="scale-125" />
             <div className="inline-flex border border-emerald-200 bg-white rounded-full overflow-hidden">
               <Button
                 variant="ghost"
