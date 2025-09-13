@@ -57,7 +57,7 @@ export default function StaffManagement() {
         <div className="p-6">
             <h2 className="text-2xl font-bold mb-4">Staff Management</h2>
 
-            <button className="px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600"
+            <button className="px-4 py-2 mb-3 bg-emerald-500 text-white rounded hover:bg-emerald-600"
             onClick={() => setShowForm(!showForm)}
             >
                 {showForm ? 'Cancel' : '+ Add New'}
@@ -130,7 +130,7 @@ export default function StaffManagement() {
                 <p>Loading staff...</p>
             ) : (
                 <div>
-                    <p>Found {staff.length} staff members</p>
+                    <p className="mb-3">Found {staff.length} staff members</p>
                     {staff.map((user) => (
                         <div key={user.id} className="border p-4 rounded-lg mb-2 flex justify-between items-center">
                             <div>
@@ -143,7 +143,7 @@ export default function StaffManagement() {
                                 <button className="px-3 py-1 bg-blue-500 text-white rounded text-sm">
                                     Edit
                                 </button>
-                                <button className="px-3 px-1 bg-red-500 text-white rounded text-sm">
+                                <button className="px-3 py-1 bg-red-500 text-white rounded text-sm">
                                     Delete
                                 </button>
                             </div>
